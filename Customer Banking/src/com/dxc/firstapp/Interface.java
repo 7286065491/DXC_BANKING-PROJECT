@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 
 public interface Interface {
 	
-	public void openAccount(BufferedReader buff);
-	public void deposit(BufferedReader buff);
-	public void withdrawl(BufferedReader buff);
-	public void openFD(BufferedReader buff);
+	public void openAccount(BufferedReader buff, Customer customer );
+	public void deposit(BufferedReader buff, Customer customer);
+	public void withdrawl(BufferedReader buff, Customer customer);
+	public void openFD(BufferedReader buff, Customer customer);
 
 }
 

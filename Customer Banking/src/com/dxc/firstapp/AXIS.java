@@ -11,17 +11,23 @@ public class AXIS implements Interface{
 	public int BAL = MIN_BAL;
 	
 	@Override
-	public void openAccount(BufferedReader buff) {
+	public void openAccount(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your Name");
 			String name = buff.readLine();
 			System.out.println("Enter your Email");
-			String email = buff.readLine();
+			String mailid = buff.readLine();
 			System.out.println("Enter your Phone");
-			String phone = buff.readLine();
+			String phonenumber = buff.readLine();
+			
+			customer.setName(name);
+			customer.setMailid(mailid);
+			customer.setPhonenumber(phonenumber);
+			int mOpenAccountCounter = customer.getOpenAccountCounter()+1;
+			customer.setOpenAccountCounter(mOpenAccountCounter);
 			
 			System.out.println("Congratulations your Account is Opened !!");
-			System.out.println("your Details are \nName: "+name+"\nEmail: "+email+"\nPhone: "+phone);
+			System.out.println("your Details are \nName: "+name+"\nEmail: "+mailid+"\nPhone: "+phonenumber);
 		}
 		catch(Exception e) {
 			System.out.println("Exception is "+e);
@@ -29,11 +35,17 @@ public class AXIS implements Interface{
 	}
 
 	@Override
-	public void deposit(BufferedReader buff) {
+	public void deposit(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be deposited");
 			String amount = buff.readLine();
 			BAL = BAL + Integer.parseInt(amount);
+			System.out.println("Balance is "+BAL);
+			customer.setBalance(String.valueOf(BAL));
+			int mDepositCounter = customer.getDepositCounter()+1;
+			customer.setDepositCounter(mDepositCounter);
+			int mWithdrawlCounter = customer.getWithdrawlCounter()+1;
+			customer.setWithdrawlCounter(mWithdrawlCounter);
 			System.out.println("Balance is "+BAL);
 		}
 		catch(Exception e) {
@@ -42,7 +54,7 @@ public class AXIS implements Interface{
 	}
 
 	@Override
-	public void withdrawl(BufferedReader buff) {
+	public void withdrawl(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter the amount to be Withdrawl");
 			String amount = buff.readLine();
@@ -51,6 +63,8 @@ public class AXIS implements Interface{
 			else
 				System.out.println("MIN BAL is not maintained after withdrawl !!");
 			System.out.println("Balance is "+BAL);
+			customer.setBalance(String.valueOf(BAL));
+			System.out.println("Balance is "+BAL);
 		}
 		catch(Exception e) {
 			System.out.println("Exception is "+e);
@@ -58,7 +72,7 @@ public class AXIS implements Interface{
 	}
 
 	@Override
-	public void openFD(BufferedReader buff) {
+	public void openFD(BufferedReader buff, Customer customer) {
 		try {
 			System.out.println("Enter your FD amount");
 			String fdamount = buff.readLine();
@@ -68,6 +82,8 @@ public class AXIS implements Interface{
 				int TotalFDAmount = Integer.parseInt(fdamount) + (ROI*Integer.parseInt(fdamount));
 				for(int i=2; i<Integer.parseInt(years); i++)
 					TotalFDAmount = TotalFDAmount + (ROI*TotalFDAmount);
+				int mOpenCounter = customer.getOpenFDCounter()+1;
+				customer.setOpenFDCounter(mOpenCounter);
 				System.out.println("Your Total FD Amount after "+years+" years will be "+TotalFDAmount);
 			}
 				
