@@ -23,17 +23,26 @@ public class FeesReport
 			System.out.println("enter your choice");
 			System.out.println("1. Adminlogin \n2. AccountLogin");
 			String mchoiceoption=fees.buff.readLine();
-			
+			String continuechoice;
+			boolean transaction = true;
 			if(mchoiceoption.equalsIgnoreCase("1"))
 			{
 				AdminLogin admin = new AdminLogin();
 				admin.insert();
 				admin.select();
+				System.out.println("do you want to continue\nyes \nNo");
+				continuechoice=fees.buff.readLine();
+				if(continuechoice.equalsIgnoreCase("No"))
+					transaction = false;
 			}
 			else
 			{
 				AccountLogin account = new AccountLogin();
 				account.accountantSection();
+				System.out.println("do you want to continue\nyes \nNo");
+				continuechoice=fees.buff.readLine();
+				if(continuechoice.equalsIgnoreCase("No"))
+					transaction = false;
 			}
 	}
 
