@@ -201,6 +201,9 @@ public void accountantSection()
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			scan.close();
+		}
 	}
 	else if(moption.equalsIgnoreCase("4"))
 	{
@@ -221,5 +224,7 @@ public void accountantSection()
 	{
 		System.out.println("logout");
 	}
+	
 }
+
 }

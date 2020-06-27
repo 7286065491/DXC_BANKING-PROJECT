@@ -10,13 +10,13 @@ import java.util.Scanner;
 public class AdminLogin 
 {
 	static String url="jdbc:mysql://localhost:3306?user=root&password=mounika";
-	public static void insert()
+	public  void insert()
 	{
-		 
+		Scanner scan = new Scanner(System.in);
 		try {
 			Connection con = DriverManager.getConnection(url);
 			PreparedStatement stmtInsert = con.prepareStatement("insert into test.logintable values(?,?,?,?,?)");
-			Scanner scan = new Scanner(System.in);
+			
 			System.out.println("enter id");
 			stmtInsert.setInt(1, scan.nextInt());
 			System.out.println("enter the name");
@@ -33,16 +33,19 @@ public class AdminLogin
 			e.printStackTrace();
 		}
 		
+		finally {
+			scan.close();
+		}
 		
 	}
-	public static void select()
+	public  void select()
 	{
 		String option=null;
-		 
+		 Scanner scan1 = new Scanner(System.in);
 		try {
 			Connection con1 = DriverManager.getConnection(url);
 			PreparedStatement pst = con1.prepareStatement("select name from test.logintable where phonenumber=? and password=?");
-		    Scanner scan1 = new Scanner(System.in);
+		   
 		    System.out.println("enter the phonenumber");
 		    pst.setString(1, scan1.next());
 		    System.out.println("enter the password");
@@ -81,14 +84,19 @@ public class AdminLogin
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			scan1.close();
+			
+		}
 		
 	}
 	public void adminSection()
 	{
+		Scanner scan = new Scanner(System.in);
 		try {
 			Connection con = DriverManager.getConnection(url);
 			PreparedStatement stmtInsert = con.prepareStatement("insert into test.adminsection values(?,?,?,?)");
-			Scanner scan = new Scanner(System.in);
+			
 			System.out.println("enter id");
 			stmtInsert.setInt(1, scan.nextInt());
 			System.out.println("enter the name");
@@ -102,13 +110,17 @@ public class AdminLogin
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			scan.close();
+		}
 	}
 	public void viewAccount()
 	{
+		Scanner scan = new Scanner(System.in);
 		try {
 			Connection con = DriverManager.getConnection(url);
 			PreparedStatement stmtInsert = con.prepareStatement("select id from test.adminsection where values(?,?,?,?");
-			Scanner scan = new Scanner(System.in);
+			
 			System.out.println("enter id");
 			stmtInsert.setInt(1, scan.nextInt());
 			System.out.println("enter the name");
@@ -121,6 +133,9 @@ public class AdminLogin
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally {
+			scan.close();
 		}
 	}
 }
