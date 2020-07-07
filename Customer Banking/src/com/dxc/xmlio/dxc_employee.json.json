@@ -1,0 +1,15 @@
+{
+	"DXC_Employee": [{
+			"id": "101",
+			"name": "Rohit Sharma"
+		},
+		{
+			"id": "102",
+			"name": "Mohit Sharma"
+		},
+		{
+			"id": "103",
+			"name": "Ishant Sharma"
+		}
+	]
+}
